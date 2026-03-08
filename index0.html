@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>16Cowrie — Certification Mini Course — Module 2 Eldership</title>
+  <meta name="description" content="Module 2 of the 16Cowrie Certification Mini Course. Learn the 20-4 Eldership pattern, connect 4 Cowrie Shell Divination to Merindilogun, and complete the 16-day casting practice." />
+  <meta name="color-scheme" content="dark" />
+  <style>
+    :root{
+      --bg:#050608;
+      --ink:#f9fafb;
+      --muted:#9ca3af;
+      --card:#10121a;
+      --soft:#171926;
+      --accent:#fbbf24;  /* golden cowrie */
+      --accent-soft:rgba(251,191,36,.16);
+      --ring:rgba(251,191,36,.35);
+      --radius:20px;
+      --max:1120px;
+    }
+
+    *{box-sizing:border-box;}
+
+    body{
+      margin:0;
+      background:radial-gradient(circle at top,#1f2933 0,#020308 52%);
+      color:var(--ink);
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    a{color:var(--accent);}
+
+    /* TOP BAR */
+    header{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:18px 18px 8px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .brand span{
+      font-weight:700;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      font-size:.9rem;
+    }
+
+    nav{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      font-size:.85rem;
+    }
+
+    nav a{
+      text-decoration:none;
+      padding:6px 12px;
+      border-radius:999px;
+      border:1px solid rgba(249,250,251,.08);
+      background:rgba(15,23,42,.6);
+      color:var(--muted);
+    }
+
+    nav a.active{
+      border-color:var(--accent);
+      background:var(--accent-soft);
+      color:var(--ink);
+    }
+
+    /* HERO */
+    .hero-wrap{
+      max-width:var(--max);
+      margin:10px auto 30px;
+      padding:0 18px 10px;
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);
+      gap:24px;
+      align-items:center;
+      background:linear-gradient(135deg,rgba(15,23,42,.9),rgba(8,47,73,.9));
+      border-radius:var(--radius);
+      padding:26px 24px;
+      border:1px solid rgba(255,255,255,.06);
+      box-shadow:0 22px 40px rgba(0,0,0,.55);
+    }
+
+    @media (max-width:768px){
+      .hero{grid-template-columns:1fr;}
+    }
+
+    .hero-tag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:4px 10px;
+      border-radius:999px;
+      background:rgba(15,23,42,.9);
+      border:1px solid rgba(148,163,184,.5);
+      font-size:.7rem;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      color:var(--muted);
+      margin-bottom:10px;
+    }
+
+    .hero h1{
+      font-size:1.9rem;
+      margin:4px 0 6px;
+    }
+
+    .hero h1 span{
+      color:var(--accent);
+    }
+
+    .hero p{
+      margin:4px 0;
+      color:var(--muted);
+    }
+
+    .hero-key{
+      margin-top:10px;
+      font-size:.9rem;
+      color:#e5e7eb;
+    }
+
+    .hero-actions{
+      margin-top:18px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .btn-primary,
+    .btn-ghost{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:10px 18px;
+      border-radius:999px;
+      border:1px solid transparent;
+      text-decoration:none;
+      font-size:.9rem;
+      font-weight:600;
+      cursor:pointer;
+    }
+
+    .btn-primary{
+      background:var(--accent);
+      color:#111827;
+      box-shadow:0 0 18px var(--ring);
+    }
+
+    .btn-primary:hover{
+      box-shadow:0 0 26px var(--ring);
+    }
+
+    .btn-ghost{
+      background:rgba(15,23,42,.9);
+      border-color:rgba(148,163,184,.7);
+      color:var(--muted);
+    }
+
+    .hero-image-wrap{
+      position:relative;
+      border-radius:calc(var(--radius) - 4px);
+      overflow:hidden;
+      border:1px solid rgba(249,250,251,.08);
+      background:#111827;
+      min-height:230px;
+    }
+
+    .hero-image-wrap img{
+      display:block;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .hero-pill{
+      position:absolute;
+      left:14px;
+      bottom:14px;
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(15,23,42,.94);
+      font-size:.75rem;
+      color:var(--muted);
+      border:1px solid rgba(156,163,175,.7);
+    }
+
+    /* CONTENT AREA */
+    .content{
+      max-width:var(--max);
+      margin:0 auto 40px;
+      padding:0 18px 18px;
+      display:grid;
+      grid-template-columns:minmax(0,1.3fr) minmax(0,.9fr);
+      gap:22px;
+    }
+
+    @media (max-width:900px){
+      .content{grid-template-columns:1fr;}
+    }
+
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:22px 20px;
+      border:1px solid rgba(255,255,255,.06);
+      box-shadow:0 16px 32px rgba(0,0,0,.5);
+    }
+
+    .card h2{
+      margin:0 0 8px;
+      font-size:1.2rem;
+      color:var(--accent);
+    }
+
+    .card h3{
+      margin:18px 0 6px;
+      font-size:1rem;
+      color:#e5e7eb;
+    }
+
+    .card p{
+      margin:6px 0;
+      font-size:.93rem;
+      color:var(--muted);
+    }
+
+    .highlight{
+      padding:10px 12px;
+      border-radius:14px;
+      background:var(--soft);
+      border:1px dashed rgba(250,250,250,.18);
+      font-size:.86rem;
+      margin-top:10px;
+    }
+
+    ul{
+      padding-left:18px;
+      margin:6px 0;
+      font-size:.92rem;
+      color:var(--muted);
+    }
+
+    li{margin-bottom:4px;}
+
+    .steps{
+      counter-reset:step;
+      list-style:none;
+      padding-left:0;
+      margin:10px 0 0;
+    }
+
+    .steps li{
+      position:relative;
+      padding-left:34px;
+      margin-bottom:10px;
+      font-size:.92rem;
+      color:var(--muted);
+    }
+
+    .steps li::before{
+      counter-increment:step;
+      content:counter(step);
+      position:absolute;
+      left:0;
+      top:2px;
+      width:22px;
+      height:22px;
+      border-radius:999px;
+      background:var(--accent-soft);
+      border:1px solid var(--accent);
+      color:#111827;
+      font-size:.78rem;
+      font-weight:700;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .note{
+      font-size:.8rem;
+      color:#9ca3af;
+      margin-top:6px;
+    }
+
+    footer{
+      text-align:center;
+      padding:26px 20px 18px;
+      font-size:.78rem;
+      color:rgba(148,163,184,.7);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header>
+    <div class="brand">
+      <div style="width:26px;height:26px;border-radius:999px;border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:.65rem;">16</div>
+      <span>16cowrie.com</span>
+    </div>
+    <nav>
+      <a href="/">Home</a>
+      <a href="#overview">Module 2</a>
+      <a href="#practice">Practice Log</a>
+      <a href="#cert">Certification Path</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <div class="hero-wrap">
+    <section class="hero">
+      <div>
+        <div class="hero-tag">
+          16Cowrie Certification Mini Course • Module 2
+        </div>
+        <h1><span>20-4 Eldership</span> on the Mat</h1>
+        <p class="hero-key">
+          Bridge 4 Cowrie Shell Divination into full Merindilogun by honoring Eldership: Eldest, Elder, Senior and Junior
+          cowries and their corresponding Odu.0
+        </p>
+        <p>
+          This module deepens your discipline with 16-day casting practice so that the relationship between cowrie position,
+          orientation and Odu seniority becomes instinctive in your hands.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn-primary" href="#practice">Begin 16-Day Practice</a>
+          <a class="btn-ghost" href="#overview">Read Module Overview</a>
+        </div>
+      </div>
+
+      <div class="hero-image-wrap">
+        <!-- Replace "16cowrie-module2.png" with your actual image filename -->
+        <img src="16cowrie-module2.png" alt="Sixteen cowrie shells, 8 face up and 8 face down, randomly cast on a divination mat">
+        <div class="hero-pill">
+          16 cowries • 8 face up • 8 face down • live orientation on the mat
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main class="content">
+
+    <!-- LEFT: OVERVIEW & THEORY -->
+    <section id="overview" class="card">
+      <h2>Module 2 Overview — Eldership</h2>
+      <p>
+        A solid foundation for Merindilogun is built on the 4 Cowrie Shell Divination System. From five basic families of
+        responses it can be expanded to reveal the 256 Odu; extending these principles into Merindilogun is known, in this
+        course, as <b>20-4</b>. The guiding principle is <b>Respecting Eldership</b>.1
+      </p>
+
+      <h3>The 20-4 Eldership Pattern</h3>
+      <ul>
+        <li>Merindilogun is treated as <b>four sets of four cowrie shells</b>.</li>
+        <li><b>Eldership starts with the diviner</b> — you are the first point of order.</li>
+        <li><b>Seniority of Eldership</b>:
+          <ul>
+            <li>Eldest</li>
+            <li>Elder</li>
+            <li>Senior</li>
+            <li>Junior</li>
+          </ul>
+        </li>
+        <li>The <b>Eldest cowries</b> are those closest to the diviner on the mat.</li>
+        <li>The <b>Junior cowries</b> are those furthest from the diviner.</li>
+        <li>Odu Eldership mirrors cowrie Eldership — how the shells land teaches the seniority of the Odu revealed.</li>
+      </ul>
+
+      <div class="highlight">
+        In this module you are not just memorizing Odu. You are learning how location, orientation and seniority of the
+        shells reveal which Odu is “speaking first,” training your eye and spirit to recognize Eldest, Elder, Senior and Junior
+        expressions in every cast.
+      </div>
+
+      <h3>Module Intent</h3>
+      <p>
+        By the end of 16 days of practice you will have documented a living map of how your casting elements express Odu
+        through Eldership, giving you a repeatable 20-4 pattern that you can carry into full Merindilogun work and certification.
+      </p>
+    </section>
+
+    <!-- RIGHT: PRACTICE STEPS -->
+    <section id="practice" class="card">
+      <h2>Daily Practice — 16 Days of 20-4</h2>
+      <p>
+        Each practice day is built from four focused casts. Every cast yields a sequence of Eldest, Elder, Senior and Junior
+        Odu, documented using two columns of dots (single or double) according to your casting orientation.2
+      </p>
+
+      <h3>Core Instructions (Per Day)</h3>
+      <ol class="steps">
+        <li>
+          <b>Cast once</b> and determine the Eldest cowries (closest to you), then Elder, Senior and Junior.
+          From this single cast, document four pairs of Odu using dots based on orientation and direction.
+        </li>
+        <li>
+          <b>Cast a second time</b> and repeat, recording the next four Odu pairs for Eldest, Elder, Senior and Junior.
+        </li>
+        <li>
+          <b>Cast a third and a fourth time,</b> each time documenting four more Odu pairs determined by Eldership.
+        </li>
+        <li>
+          At the end of Day 1 you will have <b>16 pairs of Odu</b> (4 casts × 4 Eldership positions). Repeat this structure
+          for each of the 16 consecutive days.
+        </li>
+      </ol>
+
+      <p class="note">
+        If more than one full day of practice is missed, start the 16-day count again. Consistency is part of the initiation
+        into Eldership on the mat.3
+      </p>
+
+      <h3 id="cert">Toward Certification</h3>
+      <p>
+        Completion of Module 2 requires:
+      </p>
+      <ul>
+        <li>16 documented practice days using the 20-4 Eldership pattern.</li>
+        <li>Evidence of clear notation for Eldest, Elder, Senior and Junior Odu in each cast.</li>
+        <li>A brief written reflection on how your sense of Eldership has changed over the 16 days.</li>
+      </ul>
+
+      <div class="highlight">
+        When you have completed and submitted your 16-day practice log, you are eligible to advance to the next module in
+        the 16Cowrie Certification Mini Course and to schedule a review session with an SGI-approved diviner.
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    ©2024, 2025 SwamiG Institute • 16Cowrie Certification Mini Course • Supported by Maat(–) Oturopon, Heru Hetep(+) Ofun Meji
+  </footer>
+
+</body>
+</html>
