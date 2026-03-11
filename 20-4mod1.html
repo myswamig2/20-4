@@ -1,1 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- =========================================================
+    SGI — 16 Cowrie Certification Mini-Course
+    Module 1: Understanding the Language of the 16 Cowries
+    File: module1.html
 
+    Notes:
+    - Put this file in the SAME folder as your logo if using:
+      SwamiG.gif
+    - Fully static (GitHub Pages / Cloudflare Pages friendly)
+    - Module cards and checklist progress saved locally
+  ========================================================== -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="dark light" />
+  <meta name="theme-color" content="#0b0b0f" />
+  <title>SGI Module 1 — Understanding the Language of the 16 Cowries</title>
+  <meta name="description" content="SwamiG Institute Module 1 for the 16 Cowrie certification mini-course: orientation to shell anatomy, face up vs face down, counting opens, and the language of the 16 Odu." />
+
+  <style>
+    :root{
+      --bg:#0b0b0f;
+      --bg2:#12131a;
+      --panel:#151824;
+      --panel2:#1a1f2d;
+      --ink:#f3f1ea;
+      --muted:#c6c0b3;
+      --soft:#9f9787;
+      --gold:#d7b56d;
+      --gold2:#f0d59a;
+      --purple:#6e4aa8;
+      --purple2:#8b66c8;
+      --line:rgba(255,255,255,.10);
+      --glow:0 0 0 1px rgba(240,213,154,.14), 0 12px 40px rgba(0,0,0,.35);
+      --radius:22px;
+      --radius-sm:14px;
+      --shadow:0 20px 60px rgba(0,0,0,.45);
+      --ok:#98d7a5;
+      --warn:#f2c57c;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at top right, rgba(139,102,200,.18), transparent 28%),
+        radial-gradient(circle at top left, rgba(215,181,109,.14), transparent 22%),
+        linear-gradient(180deg, #0a0b0f 0%, #0f1118 42%, #0b0b0f 100%);
+      line-height:1.6;
+    }
+
+    a{color:var(--gold2);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .wrap{
+      width:min(1180px, calc(100% - 28px));
+      margin:0 auto;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter:blur(14px);
+      background:rgba(10,11,15,.72);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding:12px 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:0;
+    }
+
+    .brand img{
+      width:48px;
+      height:48px;
+      object-fit:contain;
+      border-radius:12px;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:var(--glow);
+    }
+
+    .brand-text{
+      min-width:0;
+    }
+
+    .brand-kicker{
+      font-size:.73rem;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      color:var(--gold2);
+      opacity:.9;
+    }
+
+    .brand-title{
+      font-family:"Libre Baskerville", Georgia, serif;
+      font-size:1rem;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .nav-pills{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      justify-content:flex-end;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:9px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.08);
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      color:var(--ink);
+      font-size:.92rem;
+      box-shadow:0 6px 22px rgba(0,0,0,.18);
+      transition:transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+
+    .pill:hover{
+      transform:translateY(-1px);
+      border-color:rgba(240,213,154,.30);
+      text-decoration:none;
+    }
+
+    .hero{
+      padding:42px 0 22px;
+    }
+
+    .hero-card{
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 18% 18%, rgba(240,213,154,.12), transparent 24%),
+        radial-gradient(circle at 82% 0%, rgba(139,102,200,.18), transparent 30%),
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:30px;
+      box-shadow:var(--shadow);
+      padding:30px 24px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.25fr .9fr;
+      gap:24px;
+      align-items:center;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      padding:7px 12px;
+      border-radius:999px;
+      background:rgba(240,213,154,.10);
+      color:var(--gold2);
+      border:1px solid rgba(240,213,154,.18);
+      font-size:.78rem;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      margin-bottom:14px;
+    }
+
+    h1,h2,h3{
+      margin:0 0 12px;
+      line-height:1.15;
+    }
+
+    h1{
+      font-family:"Libre Baskerville", Georgia, serif;
+      font-size:clamp(2rem, 4vw, 3.45rem);
+    }
+
+    h2{
+      font-family:"Libre Baskerville", Georgia, serif;
+      font-size:clamp(1.45rem, 2.1vw, 2rem);
+    }
+
+    h3{
+      font-size:1.08rem;
+      letter-spacing:.01em;
+    }
+
+    .lead{
+      color:var(--muted);
+      font-size:1.04rem;
+      max-width:66ch;
+      margin:0 0 18px;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:18px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      min-height:46px;
+      padding:0 16px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      color:var(--ink);
+      font-weight:600;
+      transition:transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+
+    .btn:hover{
+      transform:translateY(-1px);
+      text-decoration:none;
+      border-color:rgba(240,213,154,.28);
+    }
+
+    .btn.primary{
+      background:linear-gradient(180deg, rgba(215,181,109,.24), rgba(126,88,179,.20));
+      border-color:rgba(240,213,154,.28);
+    }
+
+    .hero-side{
+      display:grid;
+      gap:14px;
+    }
+
+    .mini-panel{
+      border-radius:20px;
+      background:linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.028));
+      border:1px solid rgba(255,255,255,.08);
+      padding:16px;
+      box-shadow:var(--glow);
+    }
+
+    .mini-panel .label{
+      color:var(--gold2);
+      font-size:.78rem;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      margin-bottom:8px;
+    }
+
+    .mini-panel p{
+      margin:0;
+      color:var(--muted);
+      font-size:.96rem;
+    }
+
+    .shell-demo{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:10px;
+      margin-top:12px;
+    }
+
+    .shell{
+      aspect-ratio:1/1;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.08);
+      display:grid;
+      place-items:center;
+      font-weight:700;
+      text-align:center;
+      padding:6px;
+      font-size:.9rem;
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+    }
+
+    .shell.up{
+      box-shadow:0 0 0 1px rgba(152,215,165,.10) inset;
+    }
+
+    .shell.down{
+      box-shadow:0 0 0 1px rgba(242,197,124,.10) inset;
+    }
+
+    section{
+      padding:18px 0;
+    }
+
+    .section-head{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:14px;
+      margin-bottom:14px;
+    }
+
+    .section-head p{
+      margin:0;
+      color:var(--soft);
+      max-width:70ch;
+    }
+
+    .grid{
+      display:grid;
+      gap:18px;
+    }
+
+    .grid.cols-2{
+      grid-template-columns:repeat(2, minmax(0,1fr));
+    }
+
+    .grid.cols-3{
+      grid-template-columns:repeat(3, minmax(0,1fr));
+    }
+
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.022));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:var(--radius);
+      box-shadow:var(--glow);
+      padding:18px;
+    }
+
+    .card p:last-child,
+    .card ul:last-child{margin-bottom:0}
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 11px;
+      border-radius:999px;
+      background:rgba(139,102,200,.12);
+      color:#e1d2ff;
+      border:1px solid rgba(139,102,200,.20);
+      font-size:.78rem;
+      text-transform:uppercase;
+      letter-spacing:.11em;
+      margin-bottom:10px;
+    }
+
+    .compare{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+      margin-top:10px;
+    }
+
+    .compare-box{
+      border-radius:18px;
+      padding:16px;
+      border:1px solid rgba(255,255,255,.08);
+      background:linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.02));
+    }
+
+    .compare-box h3{
+      margin-bottom:8px;
+    }
+
+    .upbox h3{color:var(--ok)}
+    .downbox h3{color:var(--warn)}
+
+    .feature-list,
+    .check-list{
+      list-style:none;
+      padding:0;
+      margin:12px 0 0;
+      display:grid;
+      gap:10px;
+    }
+
+    .feature-list li,
+    .check-list li{
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.03);
+      border-radius:14px;
+      padding:12px 14px;
+      color:var(--muted);
+    }
+
+    .odu-table{
+      width:100%;
+      border-collapse:collapse;
+      overflow:hidden;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.02);
+    }
+
+    .odu-table th,
+    .odu-table td{
+      padding:12px 12px;
+      text-align:left;
+      border-bottom:1px solid rgba(255,255,255,.06);
+      font-size:.96rem;
+    }
+
+    .odu-table th{
+      background:rgba(240,213,154,.08);
+      color:var(--gold2);
+      font-weight:700;
+    }
+
+    .odu-table tr:hover td{
+      background:rgba(255,255,255,.02);
+    }
+
+    .practice-grid{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:18px;
+    }
+
+    .check-item{
+      display:flex;
+      align-items:flex-start;
+      gap:12px;
+      padding:12px 14px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.03);
+      margin-bottom:10px;
+    }
+
+    .check-item input{
+      margin-top:3px;
+      transform:scale(1.15);
+      accent-color:#cda95e;
+      cursor:pointer;
+    }
+
+    .check-item strong{
+      display:block;
+      margin-bottom:2px;
+      color:var(--ink);
+    }
+
+    .check-item span{
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .progress-wrap{
+      margin-top:14px;
+      display:grid;
+      gap:8px;
+    }
+
+    .progress-bar{
+      width:100%;
+      height:12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .progress-fill{
+      height:100%;
+      width:0%;
+      border-radius:999px;
+      background:linear-gradient(90deg, rgba(215,181,109,.95), rgba(139,102,200,.95));
+      transition:width .25s ease;
+    }
+
+    .tiny{
+      color:var(--soft);
+      font-size:.9rem;
+    }
+
+    .quote{
+      position:relative;
+      padding:20px 20px 20px 22px;
+      border-left:4px solid rgba(240,213,154,.45);
+      background:linear-gradient(180deg, rgba(240,213,154,.06), rgba(139,102,200,.06));
+      border-radius:16px;
+      color:var(--muted);
+      font-style:italic;
+    }
+
+    .footer{
+      padding:34px 0 54px;
+      color:var(--soft);
+    }
+
+    .footer-card{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      align-items:center;
+      justify-content:space-between;
+      padding:18px;
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,.08);
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+    }
+
+    .footer-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .muted{
+      color:var(--muted);
+    }
+
+    .center{
+      text-align:center;
+    }
+
+    @media (max-width:980px){
+      .hero-grid,
+      .practice-grid,
+      .grid.cols-2,
+      .grid.cols-3{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width:760px){
+      .topbar-inner{
+        flex-direction:column;
+        align-items:stretch;
+      }
+      .nav-pills{
+        justify-content:flex-start;
+      }
+      .compare{
+        grid-template-columns:1fr;
+      }
+      .shell-demo{
+        grid-template-columns:repeat(2,1fr);
+      }
+      .hero-card{
+        padding:24px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <div class="brand">
+        <a href="index.html" aria-label="Go to SGI home">
+          <img src="SwamiG.gif" alt="SwamiG Institute logo" onerror="this.style.display='none'; this.parentElement.style.display='none';">
+        </a>
+        <div class="brand-text">
+          <div class="brand-kicker">SwamiG Institute</div>
+          <div class="brand-title">16 Cowrie Certification • Module 1</div>
+        </div>
+      </div>
+
+      <nav class="nav-pills" aria-label="Section navigation">
+        <a class="pill" href="#overview">Overview</a>
+        <a class="pill" href="#anatomy">Shell Anatomy</a>
+        <a class="pill" href="#counting">16 Odu</a>
+        <a class="pill" href="#practice">Practice</a>
+        <a class="pill" href="#next">Next Step</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-card">
+          <div class="hero-grid">
+            <div>
+              <div class="eyebrow">Module 1 • Foundation</div>
+              <h1>Understanding the Language of the 16 Cowries</h1>
+              <p class="lead">
+                Before the cast can speak, the hand must learn the shell. Module 1 establishes the priestly
+                foundation for Merindilogun study: shell anatomy, face up versus face down, sacred counting,
+                and the basic language that opens the door to the 16 primary expressions.
+              </p>
+
+              <div class="hero-actions">
+                <a class="btn primary" href="#overview">Begin Module 1</a>
+                <a class="btn" href="module2.html">Go to Module 2</a>
+                <a class="btn" href="#practice">Checklist Practice</a>
+              </div>
+            </div>
+
+            <div class="hero-side">
+              <div class="mini-panel">
+                <div class="label">Module Focus</div>
+                <p>
+                  Learn what the shell is saying <span class="muted">before</span> learning how to interpret the cast.
+                  Count first. Observe first. Name first.
+                </p>
+
+                <div class="shell-demo" aria-hidden="true">
+                  <div class="shell up">Face Up<br>Open</div>
+                  <div class="shell down">Face Down<br>Closed</div>
+                  <div class="shell up">Speaking</div>
+                  <div class="shell down">Hidden</div>
+                </div>
+              </div>
+
+              <div class="mini-panel">
+                <div class="label">Learning Outcomes</div>
+                <p>
+                  By the end of this module, the student should be able to identify shell orientation,
+                  count open shells accurately, and match counts to the basic 16-cowrie sequence.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="overview">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>Module Overview</h2>
+            <p>This is the gateway lesson that prepares the student for later casting, Ire, Ibi, and validation work.</p>
+          </div>
+        </div>
+
+        <div class="grid cols-3">
+          <article class="card">
+            <div class="badge">Lesson 1</div>
+            <h3>What is being observed?</h3>
+            <p class="muted">
+              In Merindilogun, the shells are not random objects. Each shell presents a visible condition:
+              <strong>open</strong> or <strong>closed</strong>. The first discipline is to observe correctly.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="badge">Lesson 2</div>
+            <h3>Why counting matters</h3>
+            <p class="muted">
+              The total number of open shells establishes the numerical doorway through which the reading begins.
+              The count is the first language of the cast.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="badge">Lesson 3</div>
+            <h3>Priestly posture</h3>
+            <p class="muted">
+              The student learns sacred handling: calm breath, orderly hands, focused attention, and respect
+              for the implement and process.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="anatomy">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>The Anatomy of the Cowrie</h2>
+            <p>Before there is interpretation, there must be recognition.</p>
+          </div>
+        </div>
+
+        <div class="grid cols-2">
+          <article class="card">
+            <div class="badge">Structure</div>
+            <h3>Two visible conditions</h3>
+            <p class="muted">
+              Each cowrie shell has a side that shows the opening and a side that shows the back. In beginner
+              instruction, these are commonly taught as:
+            </p>
+
+            <div class="compare">
+              <div class="compare-box upbox">
+                <h3>Face Up / Open</h3>
+                <p class="muted">
+                  The shell’s opening is visible. This is often treated as the shell being
+                  <strong>open, speaking, revealed, or active</strong>.
+                </p>
+              </div>
+
+              <div class="compare-box downbox">
+                <h3>Face Down / Closed</h3>
+                <p class="muted">
+                  The back of the shell is visible. This is often treated as
+                  <strong>closed, hidden, veiled, or resting</strong>.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="badge">Foundation Insight</div>
+            <h3>What the student must train</h3>
+            <ul class="feature-list">
+              <li><strong>Eye discipline:</strong> see the shell exactly as it lies.</li>
+              <li><strong>Hand discipline:</strong> handle the shells with order and reverence.</li>
+              <li><strong>Counting discipline:</strong> count only what is open.</li>
+              <li><strong>Naming discipline:</strong> match the count to the correct Odu expression.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="counting">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>The 16-Cowrie Counting Table</h2>
+            <p>This chart gives the student an immediate numerical anchor for the cast.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div style="overflow:auto;">
+            <table class="odu-table">
+              <thead>
+                <tr>
+                  <th>Open Shells</th>
+                  <th>Basic Name</th>
+                  <th>Training Note</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>1</td><td>Okana</td><td>The first visible opening.</td></tr>
+                <tr><td>2</td><td>Ejioko</td><td>Two opens establish duality and balance tension.</td></tr>
+                <tr><td>3</td><td>Etaogunda</td><td>Three opens begin movement and emergence.</td></tr>
+                <tr><td>4</td><td>Irosun</td><td>Four opens mark structure and grounding.</td></tr>
+                <tr><td>5</td><td>Oche</td><td>Five opens begin relational complexity.</td></tr>
+                <tr><td>6</td><td>Obara</td><td>Six opens often signal expansion and force.</td></tr>
+                <tr><td>7</td><td>Odi</td><td>Seven opens press the student to precision.</td></tr>
+                <tr><td>8</td><td>Ejionile</td><td>Eight opens form a balanced midpoint threshold.</td></tr>
+                <tr><td>9</td><td>Osa</td><td>Nine opens move beyond midpoint into extension.</td></tr>
+                <tr><td>10</td><td>Ofun</td><td>Ten opens strengthen the revealed field.</td></tr>
+                <tr><td>11</td><td>Owonrin</td><td>Eleven opens demand careful visual accuracy.</td></tr>
+                <tr><td>12</td><td>Ejila-Shebora</td><td>Twelve opens intensify the revealed count.</td></tr>
+                <tr><td>13</td><td>Metanla</td><td>Thirteen opens indicate a dominant open field.</td></tr>
+                <tr><td>14</td><td>Merinla</td><td>Fourteen opens approach total revelation.</td></tr>
+                <tr><td>15</td><td>Marunla</td><td>Fifteen opens leave only one shell closed.</td></tr>
+                <tr><td>16</td><td>Merindilogun</td><td>All shells open; the full revealed count.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="grid cols-2">
+          <article class="card">
+            <div class="badge">Sacred Handling</div>
+            <h3>Priestly guidelines for beginners</h3>
+            <ul class="feature-list">
+              <li>Hold the shells with composure and intentionality.</li>
+              <li>Do not rush the count. Accuracy is greater than speed.</li>
+              <li>Keep the casting area clean, ordered, and respected.</li>
+              <li>Look first. Count second. Name third. Interpret later.</li>
+              <li>Repeat foundational counts until naming becomes natural.</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="badge">Core Principle</div>
+            <h3>The shell must be seen before it can be heard</h3>
+            <div class="quote">
+              Module 1 is not yet about deep interpretation. It is about disciplined seeing. A student who
+              counts poorly will read poorly. A student who sees clearly prepares the way for a true cast.
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="practice">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>Module 1 Practice Checklist</h2>
+            <p>Use this checklist for beginner discipline. Progress saves in your browser on this device.</p>
+          </div>
+        </div>
+
+        <div class="practice-grid">
+          <article class="card">
+            <div class="badge">Practice Work</div>
+            <div class="check-item">
+              <input type="checkbox" id="c1" class="track">
+              <label for="c1">
+                <strong>Identify open vs closed shells</strong>
+                <span>Practice visually distinguishing face up and face down conditions.</span>
+              </label>
+            </div>
+
+            <div class="check-item">
+              <input type="checkbox" id="c2" class="track">
+              <label for="c2">
+                <strong>Count open shells accurately</strong>
+                <span>Use sample shell groupings and count only the open shells.</span>
+              </label>
+            </div>
+
+            <div class="check-item">
+              <input type="checkbox" id="c3" class="track">
+              <label for="c3">
+                <strong>Name counts from 1 to 16</strong>
+                <span>Memorize the training sequence connected to the count.</span>
+              </label>
+            </div>
+
+            <div class="check-item">
+              <input type="checkbox" id="c4" class="track">
+              <label for="c4">
+                <strong>Practice calm priestly posture</strong>
+                <span>Approach the shells with order, breath, and respect.</span>
+              </label>
+            </div>
+
+            <div class="check-item">
+              <input type="checkbox" id="c5" class="track">
+              <label for="c5">
+                <strong>Prepare for Module 2 casting work</strong>
+                <span>Confirm that you can observe, count, and name before moving forward.</span>
+              </label>
+            </div>
+
+            <div class="progress-wrap">
+              <div class="tiny">Module progress: <span id="progressText">0%</span></div>
+              <div class="progress-bar" aria-hidden="true">
+                <div class="progress-fill" id="progressFill"></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="badge">Simple Drill</div>
+            <h3>Daily 5-minute beginner drill</h3>
+            <ul class="feature-list">
+              <li><strong>Minute 1:</strong> Hold the shells and settle the breath.</li>
+              <li><strong>Minute 2:</strong> Separate examples of open versus closed shells.</li>
+              <li><strong>Minute 3:</strong> Count random sample groupings of open shells.</li>
+              <li><strong>Minute 4:</strong> Speak the corresponding Odu name aloud.</li>
+              <li><strong>Minute 5:</strong> Reset the shells and repeat with calm accuracy.</li>
+            </ul>
+
+            <p class="tiny" style="margin-top:14px;">
+              This module is complete when the student can observe and count without confusion.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="next">
+      <div class="wrap">
+        <div class="card center">
+          <div class="badge">Next Module</div>
+          <h2>Ready for Module 2?</h2>
+          <p class="lead" style="margin-inline:auto;">
+            Once the student understands shell conditions and counting, the next step is the cast itself:
+            how the shells are thrown, observed, and arranged on the mat.
+          </p>
+          <div class="hero-actions" style="justify-content:center;">
+            <a class="btn primary" href="module2.html">Continue to Module 2</a>
+            <a class="btn" href="#overview">Review Module 1</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-card">
+        <div>
+          <strong>SwamiG Institute</strong><br>
+          <span class="tiny">16 Cowrie Certification Mini-Course • Module 1 Foundation Page</span>
+        </div>
+
+        <div class="footer-links">
+          <a class="pill" href="index.html">Home</a>
+          <a class="pill" href="module2.html">Module 2</a>
+          <a class="pill" href="mailto:baba@swamiginstitute.com?subject=SGI%20Module%201%20Question">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const key = "sgi_module1_progress";
+      const boxes = Array.from(document.querySelectorAll(".track"));
+      const fill = document.getElementById("progressFill");
+      const text = document.getElementById("progressText");
+
+      function load(){
+        try{
+          const saved = JSON.parse(localStorage.getItem(key) || "{}");
+          boxes.forEach(box => {
+            box.checked = !!saved[box.id];
+          });
+        }catch(e){}
+        render();
+      }
+
+      function save(){
+        const data = {};
+        boxes.forEach(box => data[box.id] = box.checked);
+        localStorage.setItem(key, JSON.stringify(data));
+        render();
+      }
+
+      function render(){
+        const done = boxes.filter(b => b.checked).length;
+        const pct = boxes.length ? Math.round((done / boxes.length) * 100) : 0;
+        fill.style.width = pct + "%";
+        text.textContent = pct + "%";
+      }
+
+      boxes.forEach(box => box.addEventListener("change", save));
+      load();
+    })();
+  </script>
+</body>
+</html>
